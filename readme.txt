@@ -62,17 +62,19 @@ See this "How to install ClickBank Ads" video:
 2. Go to your WP admin page to `Plugins` => `Add New`. Click to `Upload` link, select ZIPped files and install plugin.
 3. Click to `Activate plugin` link.
 
-For wigget area:
-4. Go to the `Appearance -> Widgets` SubPanel to add the "ClickBank Ads" to your sidebar and configure it.
-5. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname!)
-6. Click `Save` then "Save Changes" and view your site
-
-or
-
 For post area:
-4. Go to the `Settings -> ClickBank Ads` SubPanel and configure plugin.
-5. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname!)
-6. Click `Save` then "Save Changes" and view your site
+
+1. Go to the `Settings -> ClickBank Ads` SubPanel and configure plugin.
+2. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname!)
+3. Click `Save` then "Save Changes" and view your site
+
+For wigget area:
+
+1. Go to the `Appearance -> Widgets` SubPanel to add the "ClickBank Ads" to your sidebar and configure it.
+2. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname!)
+3. Click `Save` then "Save Changes" and view your site
+
+
 
 == Frequently Asked Questions ==
 
