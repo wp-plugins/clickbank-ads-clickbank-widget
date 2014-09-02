@@ -1,7 +1,7 @@
-=== ClickBank Ads ===
+=== ClickBank Affiliate Ads ===
 Contributors: CbAds
 Donate link: http://cbads.com/
-Tags: clickbank, click bank, ebook, ebooks, book, books, affiliates, affiliate, ad, adsense, keywords, advertising, earn, context,content, banner, make money, earn, make, ads, marketing, money, plugin, Context, keywords, image, images, text, widget,sidebar,google,links
+Tags: clickbank, click bank, ebook, ebooks, book, books, affiliates, affiliate, ad, adsense, keywords, advertising,Advertise, earn, context,content, banner, make money, earn, make, ads, marketing, money, plugin, Context, keywords, image, images, text, widget,sidebar,google,links
 Requires at least: 2.8
 Tested up to: 3.9.2
 Stable Tag: 1.0
@@ -23,9 +23,9 @@ This plugin creates a banner to display Click Bank keyword-sensitive graphic aff
 * Commissions of up to 75% - much higher than other affiliate networks. 
 * <a target=_blank href=https://accounts.clickbank.com/public/#/signup/form/key/cid/tnsignup>Join to ClickBank and earn money</a>! 
 
-= Why ClickBank + "ClickBank Ads Plugin"? =
+= Why ClickBank + "ClickBank Affiliate Ads Plugin"? =
 * The most powerful alternative to AdSense on the web, get paid massive affiliate commissions per sale instead of tiny amounts per click
-* "ClickBank Ads" plugin creates graphic ads to display ClickBank keyword-sensitive affiliate ads on your website or blog
+* "ClickBank Affiliate Ads" plugin creates graphic ads to display ClickBank keyword-sensitive affiliate ads on your website or blog
 * We have collected a unique database of ebooks with covers from ClickBank marketplace
 * Tens of thousands of ClickBank ebook titles with covers only with our plugin
 * Graphic advertising is more effective than text advertising and much more attractive than blocks of text.
@@ -111,7 +111,7 @@ NA
 == Changelog ==
 
 = 1.0 =
-* Initial "ClickBank Ads" widget release
+* Initial "ClickBank Affiliate Ads" widget release
 * Ebook covers from ClickBank affiliate marketplace added to plugin.
 * Tens of thousands of ClickBank affiliate ebook titles with covers added to plugin database
 * "ClickBank Ads" ad formats: Horizontal Banner, Horizontal Carousel Slideshow, Rectangle
