@@ -3,7 +3,7 @@
   Plugin Name: ClickBank Ads
   Plugin URI: http://cbads.com/WordPressClickBankWithEbookCovers.html
   Description: This plugin creates a graphic banner in post and in widget areas to display ClickBank keyword-sensitive ads with ebook covers on your Wordpress blog. ClickBank clients have earned over 2 billion dollars. Now it's your turn. Graphic advertising and marketing is far better. Commissions of up to 75% - much higher than other affiliate networks. 
-  Version: 1.0
+  Version: 1.1
   Author: ClickBank Ads
   Author URI: http://cbads.com/
 *
@@ -21,7 +21,7 @@ License:     GNU General Public License
 
 if (!class_exists("cbwec")) {
   class cbwec { 
-    var $cbwec_version="1.0"; 
+    var $cbwec_version="1.1"; 
     var $opts; 
     function cbwec() { $this->getOpts(); } 
     function getOpts() { 
@@ -46,7 +46,7 @@ if (!class_exists("cbwec")) {
  <div class="wrap">
     <h2>ClickBank Ads V <?php echo $this->cbwec_version; ?></h2>
     <p>For further Information visit the <a target=_blank href="http://cbads.com/">Plugin Site</a>. To place a vertical banner or vertical carousel to <b style="color:#ff3333">widget area (sidebar)</b>, go to the '<a href=widgets.php>Appearance -> Widgets</a>' SubPanel, add the "ClickBank Ads" to your sidebar and configure it."</p>
-    <form name="mainform" method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>">
+    <form name="mainform" method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>" onsubmit="if(document.getElementById('<?php echo $this->get_field_id('name'); ?>').value.length<5){alert('Please enter your ClickBank Nickname!');return false;}">
         <script type="text/javascript" src="<?php echo plugins_url( '/jscolor/jscolor.js', __FILE__ );?>"></script>
 			<style>
 			.cbwecb10 {border: 1px solid #<?php echo $this->opts['bordcolor'];?>;}
@@ -58,7 +58,7 @@ if (!class_exists("cbwec")) {
         </p>
         <p>
           <label for="<?php echo $this->get_field_id('name'); ?>">Your ClickBank Nickname:</label><br /><a target="regs" href="https://accounts.clickbank.com/public/#/signup/form/key/cid/tnsignup"><font size=1>(Register here its FREE)</font></a><br/>
-          <input type="text" id="<?php echo $this->get_field_id('name'); ?>" name="<?php echo $this->get_field_name('name'); ?>" value="<?php echo $this->opts['name']; ?>" style="width:200px;" />
+          <input type="text" id="<?php echo $this->get_field_id('name'); ?>" name="<?php echo $this->get_field_name('name'); ?>" value="<?php echo $this->opts['name']; ?>" style="width:200px;" required />
         </p>
         <p>
           <input type="radio" <?php if($this->opts['keywordbytitle2']=="Title") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti').style;if(this.value=='Title'){fk1.visibility='hidden';fk1.height='0px';}" value="Title" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> <label for="<?php echo $this->get_field_id('keywordbytitle2'); ?>">Ads related to post Title</label> <font size=1>(recommended)</font><br />
@@ -283,7 +283,7 @@ function add_js($content) {
   
   $title = $this->opts['title'];
   $user = $this->opts['name'];
-  if (empty($user)) {$user = "1000ebooks";}        
+    
 
   if($this->opts['border']=="1"){$bord = 1;}else{$bord = 0;}       
   if($this->opts['keywordbytitle2']=="Title") {
@@ -320,8 +320,8 @@ function add_js($content) {
   $pre_div=($title?"<b style='font-family:Arial'>".$title."</b><br>":"").$pre_div;
     if ($this->opts['pos'] == "Top") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:10px auto;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content;
 	if ($this->opts['pos'] == "Bottom") $content = $content.'<!-- cbwec_ad_section_start --><div style="margin:10px auto;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->';
-	if ($this->opts['pos'] == "Right") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:0 0 0 15px; float:right;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content; 
-	if ($this->opts['pos'] == "Left") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:0 15px 0 0; float:left;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content; 
+	if ($this->opts['pos'] == "Right") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:0 0 0 20px; float:right;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content; 
+	if ($this->opts['pos'] == "Left") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:0 20px 0 0; float:left;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content; 
 								
   return $content;
  }
@@ -363,7 +363,7 @@ function ClickBank_Ads_widget() {
 }
 
 class ClickBank_Ads_W extends WP_Widget {
-  var $cbwecw_version="1.0"; 
+  var $cbwecw_version="1.1"; 
     function ClickBank_Ads_W() {
         $widget_ops = array('classname' => 'ClickBank', 'description' => __('Use this widget to display ClickBank contextual Ad with eBook Cover Images. For details, visit: http://cbads.com/', 'ClickBank'));
         $control_ops = array('width' => 200);
@@ -418,7 +418,6 @@ class ClickBank_Ads_W extends WP_Widget {
         $instance = $old_instance;
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['cbid'] = strip_tags($new_instance['cbid']);
-        if($instance['cbid']=="1000ebooks"){$instance['cbid']="";}
         $instance['keywords'] = strip_tags($new_instance['keywords']);
         if($instance['keywords']=="Enter Your Keywords"){$instance['keywords']="";}
         $instance['keywordbytitle2'] = strip_tags($new_instance['keywordbytitle2']);
@@ -434,7 +433,7 @@ class ClickBank_Ads_W extends WP_Widget {
     }
 
     function form($instance) {
-        $defaults = array('title' => __('Related eBooks', 'ClickBank'), 'cbid' => __('1000ebooks', 'ClickBank'), 'keywordbytitle2' => __('Title', 'ClickBank'), 'border' => __('', 'ClickBank'), 'bordcolor' => __('CCCCCC', 'ClickBank'), 'bordstyle' => __('1', 'ClickBank'), 'width' => __('100%', 'ClickBank'), 'height' => __('800', 'ClickBank'), 'adformat' => __('3', 'ClickBank'), 'linkcolor' => __('0000ff', 'ClickBank'));
+        $defaults = array('title' => __('Related eBooks', 'ClickBank'), 'cbid' => __('', 'ClickBank'), 'keywordbytitle2' => __('Title', 'ClickBank'), 'border' => __('', 'ClickBank'), 'bordcolor' => __('CCCCCC', 'ClickBank'), 'bordstyle' => __('1', 'ClickBank'), 'width' => __('100%', 'ClickBank'), 'height' => __('800', 'ClickBank'), 'adformat' => __('3', 'ClickBank'), 'linkcolor' => __('0000ff', 'ClickBank'));
         $instance = wp_parse_args((array) $instance, $defaults); 
         $tmstmp_ewc=substr(microtime(),2,7);
         if($instance['adformat']=="5"){$instance['adformat']="3";}
@@ -447,7 +446,7 @@ class ClickBank_Ads_W extends WP_Widget {
         </p>
         <p>
           <label for="<?php echo $this->get_field_id('cbid'); ?>">Your Clickbank Nickname:</label><br /><a target="regs" href="https://accounts.clickbank.com/public/#/signup/form/key/cid/tnsignup"><font size=1>(Register here its FREE)</font></a><br/>
-          <input onmouseover="if(this.value=='1000ebooks'){this.value='';f_init_ewc()}" onfocus="if(this.value=='1000ebooks'){this.value='';f_init_ewc()}" type="text" id="<?php echo $this->get_field_id('cbid'); ?>" name="<?php echo $this->get_field_name('cbid'); ?>" value="<?php echo $instance['cbid']; ?>" style="width:200px;" />
+          <input onmouseover="f_init_ewc()" onfocus="f_init_ewc()" type="text" id="<?php echo $this->get_field_id('cbid'); ?>" name="<?php echo $this->get_field_name('cbid'); ?>" value="<?php echo $instance['cbid']; ?>" style="width:200px;" required />
         </p>
         <p>
           <input type="radio" <?php if($instance['keywordbytitle2']=="Title") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti<?echo $tmstmp_ewc;?>').style;if(this.value=='Title'){fk1.visibility='hidden';fk1.height='0px';}" value="Title" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> <label for="<?php echo $this->get_field_id('keywordbytitle2'); ?>">Ads related to post Title</label><br />
