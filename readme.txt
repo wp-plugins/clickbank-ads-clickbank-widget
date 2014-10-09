@@ -21,7 +21,7 @@ This Affiliate plugin creates a banner to display ClickBank keyword-sensitive gr
 * Accurate affiliate commission tracking
 * Promote almost anywhere in the world
 * Commissions of up to 75% - much higher than other affiliate networks. 
-* <a target="_blank" href="http://artdhtml.reseller.hop.clickbank.net/">Join to ClickBank and earn money as affiliate marketer</a>! Join to over 100,000 active ClickBank affiliates. 
+* <a target="_blank" href="http://artdhtml.reseller.hop.clickbank.net">Join to ClickBank and earn money as affiliate marketer</a>! Join to over 100,000 active ClickBank affiliates. 
 
 = Why ClickBank + "ClickBank Affiliate Ads" Plugin? =
 * The most powerful alternative to AdSense on the web, get paid massive affiliate commissions per sale instead of tiny amounts per click. The average ClickBank product sells for $41, and the average affiliate commission is $22.50
@@ -84,7 +84,7 @@ For wigget area:
 Our plugin show most relevant ebooks related to your keywords or to your page or post title.  
 
 = What if I don't have a Clickbank Nickname? =
-You can get Clickbank Affiliate Nickname by following <a target="_blank" href="http://artdhtml.reseller.hop.clickbank.net/">this link</a> and filling out the appropriate form. Don't worry, it's FREE for affiliates! Join to over 100,000 active ClickBank affiliates.
+You can get Clickbank Affiliate Nickname by following <a target="_blank" href="http://artdhtml.reseller.hop.clickbank.net">this link</a> and filling out the appropriate form. Don't worry, it's FREE for affiliates! Join to over 100,000 active ClickBank affiliates.
 
 = Why don't I see my own Clickbank Nickname 100% of the time? =
 The "ClickBank Affiliate Ads" plugin author's Nickname gets cycled through 10% of the time. This way, 10% of your affiliate ads will be donated automatically to the "ClickBank Affiliate Ads". In addition to providing the code to make this possible, cbAds.com pays for two fast servers to store ebook cover images.
