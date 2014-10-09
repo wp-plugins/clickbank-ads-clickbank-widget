@@ -3,7 +3,7 @@
   Plugin Name: ClickBank Ads
   Plugin URI: http://cbads.com/WordPressClickBankWithEbookCovers.html
   Description: This plugin creates a graphic banner in post and in widget areas to display ClickBank keyword-sensitive ads with ebook covers on your Wordpress blog. ClickBank clients have earned over 2 billion dollars. Now it's your turn. Graphic advertising and marketing is far better. Commissions of up to 75% - much higher than other affiliate networks. 
-  Version: 1.1
+  Version: 1.2
   Author: ClickBank Ads
   Author URI: http://cbads.com/
 *
@@ -20,8 +20,8 @@ License:     GNU General Public License
 */
 
 if (!class_exists("cbwec")) {
-  class cbwec { 
-    var $cbwec_version="1.1"; 
+  class cbwec {
+    var $cbwec_version="1.2"; 
     var $opts; 
     function cbwec() { $this->getOpts(); } 
     function getOpts() { 
@@ -45,7 +45,7 @@ if (!class_exists("cbwec")) {
  ?>
  <div class="wrap">
     <h2>ClickBank Ads V <?php echo $this->cbwec_version; ?></h2>
-    <p>For further Information visit the <a target=_blank href="http://cbads.com/">Plugin Site</a>. To place a vertical banner or vertical carousel to <b style="color:#ff3333">widget area (sidebar)</b>, go to the '<a href=widgets.php>Appearance -> Widgets</a>' SubPanel, add the "ClickBank Ads" to your sidebar and configure it."</p>
+    <p>For further Information visit the <a target=_blank href="http://cbads.com/">Plugin Site</a>.<br><br>To place a vertical banner or vertical carousel to <b style="color:#ff3333">widget area (sidebar)</b>, <br>go to the '<a href=widgets.php>Appearance -> Widgets</a>' SubPanel, <br>add the "ClickBank Ads" to your sidebar and configure it."</p>
     <form name="mainform" method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>" onsubmit="if(document.getElementById('<?php echo $this->get_field_id('name'); ?>').value.length<5){alert('Please enter your ClickBank Nickname!');return false;}">
         <script type="text/javascript" src="<?php echo plugins_url( '/jscolor/jscolor.js', __FILE__ );?>"></script>
 			<style>
@@ -57,13 +57,14 @@ if (!class_exists("cbwec")) {
           <input type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $this->opts['title']; ?>" style="width:200px;" />
         </p>
         <p>
-          <label for="<?php echo $this->get_field_id('name'); ?>">Your ClickBank Nickname:</label><br /><a target="regs" href="https://accounts.clickbank.com/public/#/signup/form/key/cid/tnsignup"><font size=1>(Register here its FREE)</font></a><br/>
+          <label for="<?php echo $this->get_field_id('name'); ?>">Your ClickBank Nickname:</label><br /><a target="regs" href="http://artdhtml.reseller.hop.clickbank.net/"><font size=1>(Register here its FREE)</font></a><br/>
           <input type="text" id="<?php echo $this->get_field_id('name'); ?>" name="<?php echo $this->get_field_name('name'); ?>" value="<?php echo $this->opts['name']; ?>" style="width:200px;" required />
         </p>
         <p>
-          <input type="radio" <?php if($this->opts['keywordbytitle2']=="Title") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti').style;if(this.value=='Title'){fk1.visibility='hidden';fk1.height='0px';}" value="Title" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> <label for="<?php echo $this->get_field_id('keywordbytitle2'); ?>">Ads related to post Title</label> <font size=1>(recommended)</font><br />
-          <input type="radio" <?php if($this->opts['keywordbytitle2']!="Title") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti').style;if(this.value!='Title'){fk1.visibility='visible';fk1.height='30px';}" value="Key" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>2" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> <label for="<?php echo $this->get_field_id('keywordbytitle2'); ?>2">Ads related to Keywords:</label>
-          <div id="dthidti" style="overflow:hidden;visibility: <?php echo ($this->opts['keywordbytitle2']!="Title"?"visible;height:30px;":"hidden;height:0px;");?>">
+          <label><input type="radio" <?php if($this->opts['keywordbytitle2']=="Title") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti').style;if(this.value!='Key'){fk1.display='none';}" value="Title" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> Ads related to post Title & Category</label> <font size=1>(recommended)</font><br />
+          <label><input type="radio" <?php if($this->opts['keywordbytitle2']=="TitleOnly") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti').style;if(this.value!='Key'){fk1.display='none';}" value="TitleOnly" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>1" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> Ads related to post Title</label><br />
+          <label><input type="radio" <?php if($this->opts['keywordbytitle2']=="Key") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti').style;if(this.value=='Key'){fk1.display='block';}" value="Key" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>2" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> Ads related to Keywords:</label>
+          <div id="dthidti" style="overflow:hidden;height:30px;display: <?php echo ($this->opts['keywordbytitle2']=="Key"?"block;":"none");?>">
             <input type="text" id="<?php echo $this->get_field_id('keywords'); ?>" name="<?php echo $this->get_field_name('keywords'); ?>" value="<?php echo ($this->opts['keywords']==""? "Enter Your Keywords" : $this->opts['keywords']); ?>" onblur="if(this.value==''){this.value='Enter Your Keywords'}" onfocus="if(this.value=='Enter Your Keywords'){this.value=''}" style="width:200px;" />
           </div>
         </p>
@@ -271,60 +272,68 @@ function findNodes($str) {
   return preg_split($pattern, $str, 0, PREG_SPLIT_OFFSET_CAPTURE); 
 } 
 
+function stopWords($term, $stopwords_file){
+	$common = file($stopwords_file,FILE_IGNORE_NEW_LINES);//load list of common words
+	//already all in lowercase   for ($x=0; $x<= count($common); $x++){$common[$x] = trim(strtolower($common[$x]));}  
+	$terms = explode(" ", strtolower($term));//make array of search terms    
+	$terms=array_unique ($terms);
+	$clean_term="";
+	foreach ($terms as $line){if (!in_array($line, $common)){$clean_term .= " ".$line;}}
+	return $clean_term;    
+}
+    
 
 var $num_cont_blocks=0;
 function add_js($content) {
-  global $num_cont_blocks;
-  if($this->opts['runplugin']!="1"){return $content;}// exit if plugin blocked
-  if(is_home() and $this->opts['homepage']!="1"){return $content;}// exit if homepage blocked
+	global $num_cont_blocks;
+	if($this->opts['runplugin']!="1"){return $content;}// exit if plugin blocked
+	if(is_home() and $this->opts['homepage']!="1"){return $content;}// exit if homepage blocked
 
-  if ($num_cont_blocks==1){return $content;}// exit for pages with multiple posts - show only in 1 post
-  $num_cont_blocks=1;
+	if ($num_cont_blocks==1){return $content;}// exit for pages with multiple posts - show only in 1 post
+	$num_cont_blocks=1;
   
-  $title = $this->opts['title'];
-  $user = $this->opts['name'];
+	$title = $this->opts['title'];
+	$user = $this->opts['name'];
     
 
-  if($this->opts['border']=="1"){$bord = 1;}else{$bord = 0;}       
-  if($this->opts['keywordbytitle2']=="Title") {
-    if(wp_title("",0)==""){
-      $keywords = get_bloginfo('name');//homepage key=blog name
-    }else{
-      //$keywordsa = explode("|",wp_title("|",0));$keywords =$keywordsa[(count($keywordsa) - 1)];//other pages key=pape title
-      $keywords = wp_title(" ",0);
-    }
-	$keywords=trim(preg_replace("/\d+/","",preg_replace("/\W+/"," ",$keywords)));
+	if($this->opts['border']=="1"){$bord = 1;}else{$bord = 0;}       
+	if($this->opts['keywordbytitle2']=="Title") {
+		$category = get_the_category(); 
+		$cats= $category[0]->cat_name." ".$category[1]->cat_name;
+		$keywords =  get_the_title()." ". $cats." ".get_bloginfo('name');
+	}
+	if($this->opts['keywordbytitle2']=="TitleOnly") {
+		$keywords =  get_the_title()." ".get_bloginfo('name');
+	}
+	if($this->opts['keywordbytitle2']=="Key") {
+		$keywords = $this->opts['keywords'];//key=from form
+	}
 
-    $keywordsa2 = explode(" ",trim($keywords));	if(count($keywordsa2)<3){$keywords=get_bloginfo('name');}//if we placed in archive (first word=month) then key=blog name
-  }else{
-    $keywords = $this->opts['keywords'];//key=from form
-  }
-  if($keywords=="Enter Your Keywords"){$keywords="";}
-  if(trim($keywords)!=trim(get_bloginfo('name'))){$keywords=str_replace(trim(get_bloginfo('name')),"",$keywords);}
-	$keywords=trim(preg_replace("/\d+/","",preg_replace("/\W+/"," ",$keywords)));
-        
-  if($this->opts['bordstyle']=="1" and $this->opts['border']=="1"){
+	$keywords=trim(preg_replace("/\W+/"," ",preg_replace("/\d+/"," ",str_replace("Uncategorized"," ",str_replace("Enter Your Keywords"," ",$keywords)))));
+	$keywords=trim($this->stopWords($keywords,plugin_dir_path( __FILE__ ).'stopwords.txt'));
+
+	if($this->opts['bordstyle']=="1" and $this->opts['border']=="1"){
 		$pre_div='<div  style="padding:10px;background:#ffffff;border: '. $this->opts['border'].'px solid #'.$this->opts['bordcolor'].'; '.($this->opts['bordstyle']=="1"?"border-radius:5px 5px 5px 5px;":"").';">';
 		$aft_div="</div>";
 		$width="190";
 	}
 	else{$st=0;$width="198";$pre_div="";$aft_div="";}
         
-  if($this->opts['adformat']=="1" or $this->opts['adformat']=="2"){$height=220;$width="100%";}
-  if($this->opts['adformat']=="3" or $this->opts['adformat']=="4"){$height=$this->opts['height'];}
-  if($this->opts['adformat']=="6"){$this->opts['adformat']="5";}
-  if($this->opts['adformat']=="5"){$height=$this->opts['height'];$width=$this->opts['width'];}
-  if($width=="100%"){$width="97%";}
+	if($this->opts['adformat']=="1" or $this->opts['adformat']=="2"){$height=220;$width="100%";}
+	if($this->opts['adformat']=="3" or $this->opts['adformat']=="4"){$height=$this->opts['height'];}
+	if($this->opts['adformat']=="6"){$this->opts['adformat']="5";}
+	if($this->opts['adformat']=="5"){$height=$this->opts['height'];$width=$this->opts['width'];}
+	if($width=="100%"){$width="97%";}
 
-  $ourdiv="<iframe src=\"http://cbads.com/ads.php?a=".$user."&lc=".$this->opts['linkcolor']."&af=".$this->opts['adformat']."&f=1&key=".$keywords."&v=".$this->cbwec_version."\" marginwidth='0' marginheight='0' width='".$width."' height='".$height."' border='0' frameborder='0'  style='background:#ffffff;border: ".($pre_div==""?$bord."px solid #".$this->opts['bordcolor']."; padding:5px;":"0px;")."' scrolling='no'></iframe>"; 
-  $pre_div=($title?"<b style='font-family:Arial'>".$title."</b><br>":"").$pre_div;
-    if ($this->opts['pos'] == "Top") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:10px auto;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content;
+	$ourdiv="<iframe src=\"http://cbads.com/ads.php?a=".$user."&lc=".$this->opts['linkcolor']."&af=".$this->opts['adformat']."&f=1&key=".$keywords."&v=".$this->cbwec_version."\" marginwidth='0' marginheight='0' width='".$width."' height='".$height."' border='0' frameborder='0'  style='background:#ffffff;border: ".($pre_div==""?$bord."px solid #".$this->opts['bordcolor']."; padding:5px;":"0px;")."' scrolling='no'></iframe>"; 
+	$pre_div=($title?"<b style='font-family:Arial'>".$title."</b><br>":"").$pre_div;
+	if ($this->opts['pos'] == "Top") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:10px auto;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content;
 	if ($this->opts['pos'] == "Bottom") $content = $content.'<!-- cbwec_ad_section_start --><div style="margin:10px auto;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->';
 	if ($this->opts['pos'] == "Right") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:0 0 0 20px; float:right;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content; 
 	if ($this->opts['pos'] == "Left") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:0 20px 0 0; float:left;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content; 
 								
-  return $content;
- }
+	return $content;
+}
  
 
 }//class
@@ -363,7 +372,7 @@ function ClickBank_Ads_widget() {
 }
 
 class ClickBank_Ads_W extends WP_Widget {
-  var $cbwecw_version="1.1"; 
+  var $cbwecw_version="1.2"; 
     function ClickBank_Ads_W() {
         $widget_ops = array('classname' => 'ClickBank', 'description' => __('Use this widget to display ClickBank contextual Ad with eBook Cover Images. For details, visit: http://cbads.com/', 'ClickBank'));
         $control_ops = array('width' => 200);
@@ -373,32 +382,35 @@ class ClickBank_Ads_W extends WP_Widget {
       return apply_filters( 'single_post_title', $title); 
     }
 
-    
+	function stopWords($term, $stopwords_file){
+		$common = file($stopwords_file,FILE_IGNORE_NEW_LINES);//load list of common words
+		//already all in lowercase   for ($x=0; $x<= count($common); $x++){$common[$x] = trim(strtolower($common[$x]));}  
+		$terms = explode(" ", strtolower($term));//make array of search terms    
+		$terms=array_unique ($terms);
+		$clean_term="";
+		foreach ($terms as $line){if (!in_array($line, $common)){$clean_term .= " ".$line;}}
+		return $clean_term;    
+	}
+
     function widget($args, $instance) {
         extract($args);
         $title = apply_filters('widget_title', $instance['title']);
        
-   
         if($instance['keywordbytitle2']=="Title") {
-          if(wp_title("",0)==""){
-            $keywords = get_bloginfo('name');//homepage key=blog name
-          }else{
-            //$keywordsa = explode("|",wp_title("|",0));$keywords =$keywordsa[(count($keywordsa) - 1)];//other pages key=pape title
-			$keywords = wp_title(" ",0);
-		 }
-		 $keywords=trim(preg_replace("/\d+/","",preg_replace("/\W+/"," ",$keywords)));
-         $keywordsa2 = explode(" ",trim($keywords));if(count($keywordsa2)<3){$keywords=get_bloginfo('name');}//if we placed in archive (first word=month) then key=blog name
-          
-        }else{
-          $keywords = $instance ['keywords'];//key=from form
+			$category = get_the_category(); 
+			$cats= $category[0]->cat_name." ".$category[1]->cat_name;
+          	$keywords =  $cats." ".get_the_title()." ". get_bloginfo('name');
         }
-        if($keywords=="Enter Your Keywords"){$keywords="";}
-        
-        if(trim($keywords)!=trim(get_bloginfo('name'))){$keywords=str_replace(trim(get_bloginfo('name')),"",$keywords);}
-		$keywords=trim(preg_replace("/\d+/","",preg_replace("/\W+/"," ",$keywords)));
-		
-		
-		
+        if($instance['keywordbytitle2']=="TitleOnly") {
+          	$keywords =  get_the_title()." ". get_bloginfo('name');
+        }
+		if($instance['keywordbytitle2']=="Key") {
+			$keywords = $instance ['keywords'];//key=from form
+        }
+		$keywords=trim(preg_replace("/\W+/"," ",preg_replace("/\d+/"," ",str_replace("Uncategorized"," ",str_replace("Enter Your Keywords"," ",$keywords)))));
+		$keywords=trim($this->stopWords($keywords,plugin_dir_path( __FILE__ ).'stopwords.txt'));
+
+	
         $adformat=$instance['adformat'];
         if($adformat=="5"){$adformat="3";}
         
@@ -445,13 +457,14 @@ class ClickBank_Ads_W extends WP_Widget {
           <input type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" style="width:200px;" />
         </p>
         <p>
-          <label for="<?php echo $this->get_field_id('cbid'); ?>">Your Clickbank Nickname:</label><br /><a target="regs" href="https://accounts.clickbank.com/public/#/signup/form/key/cid/tnsignup"><font size=1>(Register here its FREE)</font></a><br/>
+          <label for="<?php echo $this->get_field_id('cbid'); ?>">Your Clickbank Nickname:</label><br /><a target="regs" href="http://artdhtml.reseller.hop.clickbank.net/"><font size=1>(Register here its FREE)</font></a><br/>
           <input onmouseover="f_init_ewc()" onfocus="f_init_ewc()" type="text" id="<?php echo $this->get_field_id('cbid'); ?>" name="<?php echo $this->get_field_name('cbid'); ?>" value="<?php echo $instance['cbid']; ?>" style="width:200px;" required />
         </p>
         <p>
-          <input type="radio" <?php if($instance['keywordbytitle2']=="Title") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti<?echo $tmstmp_ewc;?>').style;if(this.value=='Title'){fk1.visibility='hidden';fk1.height='0px';}" value="Title" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> <label for="<?php echo $this->get_field_id('keywordbytitle2'); ?>">Ads related to post Title</label><br />
-          <input type="radio" <?php if($instance['keywordbytitle2']!="Title") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti<?echo $tmstmp_ewc;?>').style;if(this.value!='Title'){fk1.visibility='visible';fk1.height='30px';}" value="Key" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>2" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> <label for="<?php echo $this->get_field_id('keywordbytitle2'); ?>2">Ads related to Keywords:</label>
-          <div id="dthidti<?echo $tmstmp_ewc;?>" style="overflow:hidden;visibility: <?php echo ($instance['keywordbytitle2']!="Title"?"visible;height:30px;":"hidden;height:0px;");?>">
+          <label><input type="radio" <?php if($instance['keywordbytitle2']=="Title") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti<?echo $tmstmp_ewc;?>').style;if(this.value!='Key'){fk1.display='none';}" value="Title" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> Ads related to post Title & Category</label><br />
+          <label><input type="radio" <?php if($instance['keywordbytitle2']=="TitleOnly") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti<?echo $tmstmp_ewc;?>').style;if(this.value!='Key'){fk1.display='none';}" value="TitleOnly" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>1" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> Ads related to post Title</label><br />
+          <label><input type="radio" <?php if($instance['keywordbytitle2']=="Key") {echo 'checked';}?> onclick="fk1=document.getElementById('dthidti<?echo $tmstmp_ewc;?>').style;if(this.value=='Key'){fk1.display='block';}" value="Key" id="<?php echo $this->get_field_id('keywordbytitle2'); ?>2" name="<?php echo $this->get_field_name('keywordbytitle2'); ?>" style="border:0px;" /> Ads related to Keywords:</label>
+          <div id="dthidti<?echo $tmstmp_ewc;?>" style="overflow:hidden;height:30px;display: <?php echo ($instance['keywordbytitle2']=="Key"?"block;":"none");?>">
             <input type="text" id="<?php echo $this->get_field_id('keywords'); ?>" name="<?php echo $this->get_field_name('keywords'); ?>" value="<?php echo ($instance['keywords']==""? "Enter Your Keywords" : $instance['keywords']); ?>" onblur="if(this.value==''){this.value='Enter Your Keywords'}" onfocus="if(this.value=='Enter Your Keywords'){this.value=''}" style="width:200px;" />
           </div>
         </p>
@@ -612,7 +625,5 @@ class ClickBank_Ads_W extends WP_Widget {
       </script>
 <?php
     }
-
 }
-
 ?>

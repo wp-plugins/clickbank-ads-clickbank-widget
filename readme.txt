@@ -21,7 +21,7 @@ This Affiliate plugin creates a banner to display ClickBank keyword-sensitive gr
 * Accurate affiliate commission tracking
 * Promote almost anywhere in the world
 * Commissions of up to 75% - much higher than other affiliate networks. 
-* <a target=_blank href=https://accounts.clickbank.com/public/#/signup/form/key/cid/tnsignup>Join to ClickBank and earn money as affiliate marketer</a>! Join to over 100,000 active ClickBank affiliates. 
+* <a target=_blank href=http://artdhtml.reseller.hop.clickbank.net/>Join to ClickBank and earn money as affiliate marketer</a>! Join to over 100,000 active ClickBank affiliates. 
 
 = Why ClickBank + "ClickBank Affiliate Ads" Plugin? =
 * The most powerful alternative to AdSense on the web, get paid massive affiliate commissions per sale instead of tiny amounts per click. The average ClickBank product sells for $41, and the average affiliate commission is $22.50
@@ -67,13 +67,13 @@ See this "How to install ClickBank Affiliate Ads" video:
 For post area:
 
 1. Go to the `Settings -> ClickBank Ads` SubPanel and configure plugin.
-2. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname!)
+2. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname to earn affiliate commission!)
 3. Click `Save` then "Save Changes" and view your site
 
 For wigget area:
 
 1. Go to the `Appearance -> Widgets` SubPanel to add the "ClickBank Ads" to your sidebar and configure it.
-2. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname!)
+2. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname to earn affiliate commission!)
 3. Click `Save` then "Save Changes" and view your site
 
 
@@ -84,7 +84,7 @@ For wigget area:
 Our plugin show most relevant ebooks related to your keywords or to your page or post title.  
 
 = What if I don't have a Clickbank Nickname? =
-You can get Clickbank Affiliate Nickname by following <a target=_blank href=https://accounts.clickbank.com/public/#/signup/form/key/cid/tnsignup>this link</a> and filling out the appropriate form. Don't worry, it's FREE for affiliates! Join to over 100,000 active ClickBank affiliates.
+You can get Clickbank Affiliate Nickname by following <a target=_blank href=http://artdhtml.reseller.hop.clickbank.net/>this link</a> and filling out the appropriate form. Don't worry, it's FREE for affiliates! Join to over 100,000 active ClickBank affiliates.
 
 = Why don't I see my own Clickbank Nickname 100% of the time? =
 The "ClickBank Affiliate Ads" plugin author's Nickname gets cycled through 10% of the time. This way, 10% of your affiliate ads will be donated automatically to the "ClickBank Affiliate Ads". In addition to providing the code to make this possible, cbAds.com pays for two fast servers to store ebook cover images.
@@ -121,3 +121,7 @@ NA
 
 = 1.1 =
 * Changed margins for Left and Right affiliate blocks
+
+= 1.2 =
+* Changes in affiliate keywords detection
+* Category of post added to keywords
