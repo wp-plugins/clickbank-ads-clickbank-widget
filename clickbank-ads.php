@@ -325,7 +325,7 @@ function add_js($content) {
 	if($this->opts['adformat']=="5"){$height=$this->opts['height'];$width=$this->opts['width'];}
 	if($width=="100%"){$width="97%";}
 
-	$ourdiv="<iframe src=\"http://cbads.com/ads.php?a=".$user."&lc=".$this->opts['linkcolor']."&af=".$this->opts['adformat']."&f=1&key=".$keywords."&v=".$this->cbwec_version."\" marginwidth='0' marginheight='0' width='".$width."' height='".$height."' border='0' frameborder='0'  style='background:#ffffff;border: ".($pre_div==""?$bord."px solid #".$this->opts['bordcolor']."; padding:5px;":"0px;")."' scrolling='no'></iframe>"; 
+	$ourdiv="<iframe src=\"http://cbads.com/ads.php?a=".$user."&lc=".$this->opts['linkcolor']."&af=".$this->opts['adformat']."&f=1&key=".$keywords."&v=".$this->cbwec_version."\" marginwidth='0' marginheight='0' width='".$width."' height='".$height."' border='0' frameborder='0'  style='margin:0;background:#ffffff;border: ".($pre_div==""?$bord."px solid #".$this->opts['bordcolor']."; padding:5px;":"0px;")."' scrolling='no'></iframe>"; 
 	$pre_div=($title?"<b style='font-family:Arial'>".$title."</b><br>":"").$pre_div;
 	if ($this->opts['pos'] == "Top") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:10px auto;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content;
 	if ($this->opts['pos'] == "Bottom") $content = $content.'<!-- cbwec_ad_section_start --><div style="margin:10px auto;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->';
@@ -420,7 +420,7 @@ class ClickBank_Ads_W extends WP_Widget {
         $width=$instance ['width'];
 ?>
 <div  style="padding:10px;background:#ffffff;border: <?php echo $instance['border']; ?>px solid #<?php echo $instance['bordcolor']; ?>; <?echo ($instance['bordstyle']=="1"?"border-radius:5px 5px 5px 5px;":"");?>;">
-<iframe src="http://cbads.com/ads.php?a=<?php echo $instance['cbid'] ?>&lc=<?php echo $instance['linkcolor']; ?>&af=<?php echo $adformat ?>&f=1&key=<?php echo $keywords ?>&v=<?php echo $this->cbwecw_version?>" marginwidth="0" marginheight="0" width="<?php echo ($width=="100%"?"100%":($width-2)."px")?>" height="<?php echo $height ?>px" border="0" frameborder="0"  style="background:#ffffff;" scrolling="no"></iframe>
+<iframe src="http://cbads.com/ads.php?a=<?php echo $instance['cbid'] ?>&lc=<?php echo $instance['linkcolor']; ?>&af=<?php echo $adformat ?>&f=1&key=<?php echo $keywords ?>&v=<?php echo $this->cbwecw_version?>" marginwidth="0" marginheight="0" width="<?php echo ($width=="100%"?"100%":($width-2)."px")?>" height="<?php echo $height ?>px" border="0" frameborder="0"  style="background:#ffffff;margin:0;" scrolling="no"></iframe>
 </div>
 <?
         echo $after_widget;
