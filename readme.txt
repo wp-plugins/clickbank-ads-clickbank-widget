@@ -4,7 +4,7 @@ Donate link: http://cbads.com/
 Tags:  ad, ads, adsense, advertising, affiliate, affiliate ads, affiliate advertising, affiliate banner, affiliate marketing, affiliate plugin, affiliate tool, affiliate widget, affiliates, affiliation, auto, automatic, banner, banners, book, books, bucks, click bank, clickbank, content, Context, CRM, digital downloads, e-commerce, earn, earn money, ebook, ebooks, eshop, google, hop, hop link, hoplink, image, images, jigoshop, keyword, keywords, lead, link, linker, links, make, make money, marketing, money, online sale, order, partner, paypal, plugin, referral, referral links, referrer, sales, shopping cart, sidebar, text, track, transaction, widget, woocommerce, wordpress, wp e-commerce
 Requires at least: 2.8
 Tested up to: 4.0
-Stable Tag: 1.1
+Stable Tag: 1.3
 
 This Affiliate plugin and widget creates a banner to display ClickBank keyword-sensitive graphic affiliate ads. Over 100,000 affiliates use ClickBank.
 == Description ==
@@ -112,16 +112,20 @@ NA
 
 == Changelog ==
 
+= 1.3 =
+* Changes in keywords detection
+* Lazy load for affiliate banners and images
+
+= 1.2 =
+* Changes in affiliate keywords detection
+* Category of post added to keywords
+
+= 1.1 =
+* Changed margins for Left and Right affiliate blocks
+
 = 1.0 =
 * Initial "ClickBank Affiliate Ads" widget release
 * Ebook covers from ClickBank affiliate marketplace added to plugin.
 * Tens of thousands of ClickBank affiliate ebook titles with covers added to plugin database
 * "ClickBank Affiliate Ads" ad formats: Horizontal Banner, Horizontal Carousel Slideshow, Rectangle
 * Banners from post area can be blocked on home page
-
-= 1.1 =
-* Changed margins for Left and Right affiliate blocks
-
-= 1.2 =
-* Changes in affiliate keywords detection
-* Category of post added to keywords

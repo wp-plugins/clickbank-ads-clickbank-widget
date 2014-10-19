@@ -1,3 +1,13 @@
+select
+alter
+update
+concat
+from
+where
+schema
+delete
+insert
+char
 http
 https
 www
