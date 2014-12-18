@@ -28,14 +28,14 @@ This Affiliate plugin creates a banner to display ClickBank keyword-sensitive gr
 * "ClickBank Affiliate Ads" plugin and widget creates graphic ads to display ClickBank keyword-sensitive affiliate ads on your website or blog
 * We have collected a unique database of ebooks with covers from ClickBank marketplace
 * Tens of thousands of ClickBank ebook titles with covers only with our plugin
-* Graphic advertising is more effective than text advertising and much more attractive than blocks of text.
+* Graphic advertising is more effective than text advertising and much more attractive than blocks of text ads.
 * Plugin and widget in one software.
 * Plugin Samples - http://cbads.com/WordPressClickBankWithEbookCovers.html (4 samples from real websites)
 
 
-= Current Plugin Features =
+= Current "ClickBank Affiliate Ads" Plugin Features =
 
-* Ad Formats: Static Banner or Carousel Slideshow with ebook covers from ClickBank marketplace.
+* Ads Formats: Static Banner or Carousel Slideshow with ebook covers from ClickBank marketplace.
 * Ad Areas: Post area (Horizontal Banners, Rectangles, Vertical Banners) and Widget sidebar area (Vertical Banners)
 * The words from the title of your posts can be used as keywords. Or keywords for your ads can be specified manually.
 * Auto calculation of the number of ebooks to be shown depending on the height and width of banner.
@@ -46,7 +46,7 @@ This Affiliate plugin creates a banner to display ClickBank keyword-sensitive gr
 = Full customization of =
 
 * Affiliate NickName
-* Ad Format
+* Ads Format
 * Font Color
 * Border Color
 * Width
