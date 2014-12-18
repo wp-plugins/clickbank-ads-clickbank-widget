@@ -13,7 +13,7 @@ Affiliate marketing is a type of performance-based marketing in which a business
 This Affiliate plugin creates a banner to display ClickBank keyword-sensitive graphic affiliate ads with ebook covers on your Wordpress blog. 
 [youtube https://www.youtube.com/watch?v=qXa2TzSxM3I]
 	
-= Why ClickBank? =
+= Why ClickBank Ads? =
 * ClickBank affiliates have earned over 2 billion dollars. Now it's your turn. 
 * Digital ClickBank products mean instant delivery and faster commissions for affiliate marketers
 * Combined commissions from all your affiliate ads
@@ -68,13 +68,13 @@ For post area:
 
 1. Go to the `Settings -> ClickBank Ads` SubPanel and configure plugin.
 2. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname to earn affiliate commission!)
-3. Click `Save` then "Save Changes" and view your site
+3. Click `Save` then "Save Changes" and view your site and ads
 
 For wigget area:
 
 1. Go to the `Appearance -> Widgets` SubPanel to add the "ClickBank Ads" to your sidebar and configure it.
 2. Fill out the fields, or leave them as the defaults (you will want to fill in your ClickBank Nickname to earn affiliate commission!)
-3. Click `Save` then "Save Changes" and view your site
+3. Click `Save` then "Save Changes" and view your site and ads
 
 
 
@@ -101,16 +101,19 @@ NA
 
 == Screenshots ==
 
-1. Affiliate Plugin options for widget area
+1. "ClickBank Ads" Affiliate Plugin options for widget area
 2. Widget Output - Vertical Affiliate Banner
 3. Affiliate Widget Output (1:5) - Carousel Slideshow
 
-4. Affiliate Plugin options for post area
+4. "ClickBank Ads" Affiliate Plugin options for post area
 5. Plugin Output - Horizontal Affiliate Banner
 6. Click Bank Affiliate Plugin Output - Rectangle (360x400)
 
 
 == Changelog ==
+
+= 1.4 =
+* Code optimization
 
 = 1.3 =
 * Changes in keywords detection
