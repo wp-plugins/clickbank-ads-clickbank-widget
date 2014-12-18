@@ -21,7 +21,7 @@ License:     GNU General Public License
 
 if (!class_exists("cbwec")) {
   class cbwec {
-    var $cbwec_version="1.4"; 
+    var $cbwec_version="1.5"; 
     var $opts; 
     function cbwec() { $this->getOpts(); } 
     function getOpts() { 
@@ -403,7 +403,7 @@ function ClickBank_Ads_widget() {
 }
 
 class ClickBank_Ads_W extends WP_Widget {
-  var $cbwecw_version="1.4"; 
+  var $cbwecw_version="1.5"; 
     function ClickBank_Ads_W() {
         $widget_ops = array('classname' => 'ClickBank', 'description' => __('Use this widget to display ClickBank contextual Ad with eBook Cover Images. For details, visit: http://cbads.com/', 'ClickBank'));
         $control_ops = array('width' => 200);
@@ -453,9 +453,10 @@ class ClickBank_Ads_W extends WP_Widget {
 ?>
 <div  style="padding:10px;background:#ffffff;border: <?php echo $instance['border']; ?>px solid #<?php echo $instance['bordcolor']; ?>; <?echo ($instance['bordstyle']=="1"?"border-radius:5px 5px 5px 5px;":"");?>;">
 <script>
-	addListenerCB(window,'scroll',function(){showCbads();})
-	addListenerCB(window,'resize',function(){showCbads();})
-	addListenerCB(window,'load',function(){showCbads();})
+	function addListenerCB2(obj,type,listener){if (obj.addEventListener){obj.addEventListener(type,listener,false);return true;}else if(obj.attachEvent){obj.attachEvent('on'+type,listener);return true;}return false;}
+	addListenerCB2(window,'scroll',function(){showCbads();})
+	addListenerCB2(window,'resize',function(){showCbads();})
+	addListenerCB2(window,'load',function(){showCbads();})
 
 	function getCoordsCB(elem){
 		var box=elem.getBoundingClientRect();
