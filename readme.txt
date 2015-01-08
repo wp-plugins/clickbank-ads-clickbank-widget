@@ -4,7 +4,7 @@ Donate link: http://cbads.com/
 Tags:  ad, ads, adsense, advertising, affiliate, affiliate ads, affiliate advertising, affiliate banner, affiliate marketing, affiliate plugin, affiliate tool, affiliate widget, affiliates, affiliation, auto, automatic, banner, banners, book, books, bucks, click bank, clickbank, content, Context, CRM, digital downloads, e-commerce, earn, earn money, ebook, ebooks, eshop, google, hop, hop link, hoplink, image, images, jigoshop, keyword, keywords, lead, link, linker, links, make, make money, marketing, money, online sale, order, partner, paypal, plugin, referral, referral links, referrer, sales, shopping cart, sidebar, text, track, transaction, widget, woocommerce, wordpress, wp e-commerce
 Requires at least: 2.8
 Tested up to: 4.1
-Stable Tag: 1.5
+Stable Tag: 1.6
 
 This Affiliate plugin and widget creates a banner to display ClickBank keyword-sensitive graphic affiliate ads. Over 100,000 affiliates use ClickBank.
 == Description ==
@@ -111,6 +111,9 @@ NA
 
 
 == Changelog ==
+
+= 1.6 =
+* New option "Show Ads only on posts"
 
 = 1.5 =
 * Widget bug correction

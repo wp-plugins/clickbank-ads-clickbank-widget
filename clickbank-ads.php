@@ -3,7 +3,7 @@
   Plugin Name: ClickBank Ads
   Plugin URI: http://cbads.com/WordPressClickBankWithEbookCovers.html
   Description: This plugin creates a graphic banner in post and in widget areas to display ClickBank keyword-sensitive ads with ebook covers on your Wordpress blog. ClickBank clients have earned over 2 billion dollars. Now it's your turn. Graphic advertising and marketing is far better. Commissions of up to 75% - much higher than other affiliate networks. 
-  Version: 1.5
+  Version: 1.6
   Author: ClickBank Ads
   Author URI: http://cbads.com/
 *
@@ -18,17 +18,18 @@ License:     GNU General Public License
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 */
+$bcgr="background:#ffffff;";//or for background from page => $bcgr="";
 
+$cbwec_version="1.6"; 
 if (!class_exists("cbwec")) {
   class cbwec {
-    var $cbwec_version="1.5"; 
     var $opts; 
     function cbwec() { $this->getOpts(); } 
     function getOpts() { 
       if (isset($this->opts) AND !empty($this->opts)) {return;} 
       $this->opts=get_option("ClickBankWEC3"); 
       if (!empty($this->opts)) {return;} 
-      $this->opts=Array ('title' => 'Related eBooks', 'name' => '', 'keywordbytitle2' => 'Title', 'border' => '','homepage'=>'1','runplugin'=>'1', 'bordcolor' => 'CCCCCC', 'bordstyle' => '1', 'adformat' => '1', 'width' => '100%', 'height' => '100%', 'linkcolor' => '0000ff','pos' => 'Top');
+      $this->opts=Array ('title' => 'Related eBooks', 'name' => '', 'keywordbytitle2' => 'Title', 'border' => '','homepage'=>'1','onlypost'=>'1','runplugin'=>'1', 'bordcolor' => 'CCCCCC', 'bordstyle' => '1', 'adformat' => '1', 'width' => '100%', 'height' => '100%', 'linkcolor' => '0000ff','pos' => 'Top');
     } 
     function sanitize_entries($options){ return $options; } 
     
@@ -36,6 +37,7 @@ if (!class_exists("cbwec")) {
     function get_field_id($fieldname){return "cbwec-".$fieldname;}
    
     function admin_menu() {
+	  global $cbwec_version;
       if (isset($_POST["cbwec_submit"])) { 
         $this->opts=$this->sanitize_entries($_POST['cbwec'], $sizes); 
         update_option('ClickBankWEC3',$this->opts); 
@@ -44,7 +46,7 @@ if (!class_exists("cbwec")) {
 
  ?>
  <div class="wrap">
-    <h2>ClickBank Ads V <?php echo $this->cbwec_version; ?></h2>
+    <h2>ClickBank Ads V <?php echo $cbwec_version; ?></h2>
     <p>For further Information visit the <a target=_blank href="http://cbads.com/">Plugin Site</a>.<br><br>To place a vertical banner or vertical carousel to <b style="color:#ff3333">widget area (sidebar)</b>, <br>go to the '<a href=widgets.php>Appearance -> Widgets</a>' SubPanel, <br>add the "ClickBank Ads" to your sidebar and configure it."</p>
     <form name="mainform" method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>" onsubmit="if(document.getElementById('<?php echo $this->get_field_id('name'); ?>').value.length<5 || document.getElementById('<?php echo $this->get_field_id('name'); ?>').value.length>10){alert('Please enter your ClickBank nickname! \nYour nickname must be 5-10 letters & digits');return false;}">
         <script type="text/javascript" src="<?php echo plugins_url( '/jscolor/jscolor.js', __FILE__ );?>"></script>
@@ -255,6 +257,10 @@ if (!class_exists("cbwec")) {
           <label for="<?php echo $this->get_field_id('homepage'); ?>">Show Ads on home page:</label>
           <input type="checkbox" <?php if($this->opts['homepage']=="1") {echo 'checked';}?> id="<?php echo $this->get_field_id('homepage'); ?>" name="<?php echo $this->get_field_name('homepage'); ?>" value="1" style="border:0px;" />
       </p>
+      <p>
+          <label for="<?php echo $this->get_field_id('onlypost'); ?>">Show Ads only on posts:</label>
+          <input type="checkbox" <?php if($this->opts['onlypost']=="1") {echo 'checked';}?> id="<?php echo $this->get_field_id('onlypost'); ?>" name="<?php echo $this->get_field_name('onlypost'); ?>" value="1" style="border:0px;" />
+      </p>
 
       
       <div class="submit">
@@ -284,10 +290,10 @@ function stopWords($term, $stopwords_file){
 
 var $num_cont_blocks=0;
 function add_js($content) {
-	global $num_cont_blocks;
+	global $num_cont_blocks,$bcgr,$cbwec_version;
 	if($this->opts['runplugin']!="1"){return $content;}// exit if plugin blocked
 	if(is_home() and $this->opts['homepage']!="1"){return $content;}// exit if homepage blocked
-
+	if(!is_single() and !is_home() and $this->opts['onlypost']=="1"){return $content;}// exit if for post only
 	if ($num_cont_blocks==1){return $content;}// exit for pages with multiple posts - show only in 1 post
 	$num_cont_blocks=1;
   
@@ -313,7 +319,7 @@ function add_js($content) {
 	$keywords=trim($this->stopWords($keywords,plugin_dir_path( __FILE__ ).'stopwords.txt'));
 
 	if($this->opts['bordstyle']=="1" and $this->opts['border']=="1"){
-		$pre_div='<div  style="padding:10px;background:#ffffff;border: '. $this->opts['border'].'px solid #'.$this->opts['bordcolor'].'; '.($this->opts['bordstyle']=="1"?"border-radius:5px 5px 5px 5px;":"").';">';
+		$pre_div='<div style="padding:10px;'.$bcgr.' border: '. $this->opts['border'].'px solid #'.$this->opts['bordcolor'].'; '.($this->opts['bordstyle']=="1"?"border-radius:5px 5px 5px 5px;":"").';">';
 		$aft_div="</div>";
 		$width="190";
 	}
@@ -356,7 +362,7 @@ function add_js($content) {
 		for(var i=0;i<tgs.length;i++){tgt=tgs[i];var src1=tgt.getAttribute('data-src');if(src1 && isVisibleCB(tgt)){tgt.src=src1;tgt.setAttribute('data-src','');}}
 	}
 	</script>
-	<iframe data-src=\"http://cbads.com/ads.php?a=".$user."&lc=".$this->opts['linkcolor']."&af=".$this->opts['adformat']."&key=".$keywords."&v=".$this->cbwec_version."\" marginwidth='0' marginheight='0' width='".$width."' height='".$height."' border='0' frameborder='0' style='margin:0;background:#ffffff;border: ".($pre_div==""?$bord."px solid #".$this->opts['bordcolor']."; padding:5px;":"0px;")."' scrolling='no'></iframe>"; 
+	<iframe data-src=\"http://cbads.com/ads.php?a=".$user."&lc=".$this->opts['linkcolor']."&af=".$this->opts['adformat']."&key=".$keywords."&v=".$cbwec_version."\" marginwidth='0' marginheight='0' width='".$width."' height='".$height."' border='0' frameborder='0' style='margin:0;".$bcgr." border: ".($pre_div==""?$bord."px solid #".$this->opts['bordcolor']."; padding:5px;":"0px;")."' scrolling='no'></iframe>"; 
 	$pre_div=($title?"<b style='font-family:Arial'>".$title."</b><br>":"").$pre_div;
 	if ($this->opts['pos'] == "Top") 	$content = '<!-- cbwec_ad_section_start --><div style="margin:10px auto;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->'.$content;
 	if ($this->opts['pos'] == "Bottom") $content = $content.'<!-- cbwec_ad_section_start --><div style="margin:10px auto;width:'.($width=="97%"?"100%":($width+12)."px").'">'.$pre_div.$ourdiv.$aft_div.'</div><!-- cbwec_ad_section_end -->';
@@ -403,7 +409,7 @@ function ClickBank_Ads_widget() {
 }
 
 class ClickBank_Ads_W extends WP_Widget {
-  var $cbwecw_version="1.5"; 
+    
     function ClickBank_Ads_W() {
         $widget_ops = array('classname' => 'ClickBank', 'description' => __('Use this widget to display ClickBank contextual Ad with eBook Cover Images. For details, visit: http://cbads.com/', 'ClickBank'));
         $control_ops = array('width' => 200);
@@ -424,6 +430,7 @@ class ClickBank_Ads_W extends WP_Widget {
 	}
 
     function widget($args, $instance) {
+		global $bcgr,$cbwec_version;
         extract($args);
         $title = apply_filters('widget_title', $instance['title']);
        
@@ -451,7 +458,7 @@ class ClickBank_Ads_W extends WP_Widget {
         $height=$instance ['height'];
         $width=$instance ['width'];
 ?>
-<div  style="padding:10px;background:#ffffff;border: <?php echo $instance['border']; ?>px solid #<?php echo $instance['bordcolor']; ?>; <?echo ($instance['bordstyle']=="1"?"border-radius:5px 5px 5px 5px;":"");?>;">
+<div  style="padding:10px;<?php echo $bcgr;?> border: <?php echo $instance['border']; ?>px solid #<?php echo $instance['bordcolor']; ?>; <?echo ($instance['bordstyle']=="1"?"border-radius:5px 5px 5px 5px;":"");?>;">
 <script>
 	function addListenerCB2(obj,type,listener){if (obj.addEventListener){obj.addEventListener(type,listener,false);return true;}else if(obj.attachEvent){obj.attachEvent('on'+type,listener);return true;}return false;}
 	addListenerCB2(window,'scroll',function(){showCbads();})
@@ -482,7 +489,7 @@ class ClickBank_Ads_W extends WP_Widget {
 		for(var i=0;i<tgs.length;i++){tgt=tgs[i];var src1=tgt.getAttribute('data-src');if(src1 && isVisibleCB(tgt)){tgt.src=src1;tgt.setAttribute('data-src','');}}
 	}
 </script>
-<iframe data-src="http://cbads.com/ads.php?a=<?php echo $instance['cbid'] ?>&lc=<?php echo $instance['linkcolor']; ?>&af=<?php echo $adformat ?>&key=<?php echo $keywords ?>&v=<?php echo $this->cbwecw_version?>" marginwidth="0" marginheight="0" width="<?php echo ($width=="100%"?"100%":($width-2)."px")?>" height="<?php echo $height ?>px" border="0" frameborder="0"  style="background:#ffffff;margin:0;" scrolling="no"></iframe>
+<iframe data-src="http://cbads.com/ads.php?a=<?php echo $instance['cbid'] ?>&lc=<?php echo $instance['linkcolor']; ?>&af=<?php echo $adformat ?>&key=<?php echo $keywords ?>&v=<?php echo $cbwec_version?>" marginwidth="0" marginheight="0" width="<?php echo ($width=="100%"?"100%":($width-2)."px")?>" height="<?php echo $height ?>px" border="0" frameborder="0"  style="<?php echo $bcgr;?>margin:0;" scrolling="no"></iframe>
 </div>
 <?
         echo $after_widget;
