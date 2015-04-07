@@ -1,9 +1,9 @@
 <?php
-/*
+/* 
   Plugin Name: ClickBank Ads
   Plugin URI: http://cbads.com/WordPressClickBankWithEbookCovers.html
   Description: This plugin creates a graphic banner in post and in widget areas to display ClickBank keyword-sensitive ads with ebook covers on your Wordpress blog. ClickBank clients have earned over 2 billion dollars. Now it's your turn. Graphic advertising and marketing is far better. Commissions of up to 75% - much higher than other affiliate networks. 
-  Version: 1.6
+  Version: 1.7
   Author: ClickBank Ads
   Author URI: http://cbads.com/
 *
@@ -20,7 +20,7 @@ License:     GNU General Public License
 */
 $bcgr="background:#ffffff;";//or for background from page => $bcgr="";
 
-$cbwec_version="1.6"; 
+$cbwec_version="1.7"; 
 if (!class_exists("cbwec")) {
   class cbwec {
     var $opts; 
@@ -70,7 +70,6 @@ if (!class_exists("cbwec")) {
             <input type="text" id="<?php echo $this->get_field_id('keywords'); ?>" name="<?php echo $this->get_field_name('keywords'); ?>" value="<?php echo $this->opts['keywords']; ?>" placeholder="Enter Your Keywords" style="width:200px;" />
           </div>
         </p>
-
 		    <table border=0 cellspacing=0 cellpadding=0>
 		     <tr><td>Ad Formats:</td><td style="padding-left:5px;">Preview:</td></tr>
 		     <tr><td>
@@ -87,7 +86,6 @@ if (!class_exists("cbwec")) {
 		      </td>
 		     </tr>
 		    </table>
-
         <div id="dthids" style="overflow:hidden;display: <?php echo ($this->opts['adformat']=="6"?"block;":"none;");?>">
 		      Width:<br />
 		      <select onchange="document.getElementById('<?php echo $this->get_field_id('width'); ?>').value=this.value;xg_pre_ewc=this.value;f_pre_ewc(this.value,0);" size="1" id="<?php echo $this->get_field_id('width2'); ?>" name="<?php echo $this->get_field_name('width2'); ?>" style="width:100px;">
@@ -106,9 +104,7 @@ if (!class_exists("cbwec")) {
 		      </select>
 		      OR
 		      <input onchange="xg_pre_ewc=this.value;f_pre_ewc(this.value,0);" type="text" id="<?php echo $this->get_field_id('width'); ?>" name="<?php echo $this->get_field_name('width'); ?>" value="<?php echo $this->opts['width']; ?>" style="width:50px;" />
-	      
 	    </div>
-	    
 	    <div id="dthids2" style="overflow:hidden;display: <?php echo ($this->opts['adformat']=="6" or $this->opts['adformat']=="3" or $this->opts['adformat']=="4"?"block;":"none;");?>">
 		    Height:<br />
 		      <select onchange="document.getElementById('<?php echo $this->get_field_id('height'); ?>').value=this.value;yg_pre_ewc=this.value;f_pre_ewc(0,this.value);" size="1" id="<?php echo $this->get_field_id('height'); ?>2" name="<?php echo $this->get_field_name('height'); ?>2" style="width:100px;">
@@ -123,13 +119,10 @@ if (!class_exists("cbwec")) {
 	      	</select>
 		      OR 
 		      <input onchange="yg_pre_ewc=this.value;f_pre_ewc(0,this.value);" type="text" id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" value="<?php echo $this->opts['height']; ?>" style="width:50px;" />
-          
       </div>
       <p>
         <table border=0 cellspacing=0 cellpadding=0><tr><td><label for="<?php echo $this->get_field_id('pos'); ?>">Position on page:</label></td><td><div style="width:60px;" id=selpos><select style="width:60px;" id="<?php echo $this->get_field_id('pos'); ?>" name="<?php echo $this->get_field_name('pos'); ?>" size="1"><option<?php if($this->opts['pos']=="Top") echo(" selected"); ?>>Top</option><option<?php if($this->opts['pos']=="Right") echo(" selected"); ?>>Right</option><option<?php if($this->opts['pos']=="Left") echo(" selected"); ?>>Left</option><option<?php if($this->opts['pos']=="Bottom") echo(" selected"); ?>>Bottom</option></select></div></td></tr></table>
       </p>
-      
-
       <script> 
         var bg_ewci;
         var bg_ewc=0;		
@@ -141,10 +134,8 @@ if (!class_exists("cbwec")) {
           if(n_ad_ch_ewc=="4"){bg_ewci=setTimeout("if(bg_ewc<60){bg_ewc++;p_ad_ch_ewc.style.backgroundPosition='0 '+bg_ewc+'px'}else{bg_ewc=0};f_car_ewc(n_ad_ch_ewcg)", 40);}
           if (n_ad_ch_ewc!="4" && n_ad_ch_ewc!="2"){p_ad_ch_ewc.style.backgroundPosition='0 0';}
         }
-        
         <?php 
         if($this->opts['border']!="1") {echo "document.getElementById('d2bgewc').style.borderWidth='0px';";}
-
 		if($this->opts['adformat']=="1") {echo 'var xg_pre_ewc="100%";var yg_pre_ewc="220";';}
 		if($this->opts['adformat']=="2") {echo 'var xg_pre_ewc="100%";var yg_pre_ewc="220";';}
         if($this->opts['adformat']=="3") {echo 'var xg_pre_ewc="160";var yg_pre_ewc="1000";';}
@@ -152,7 +143,6 @@ if (!class_exists("cbwec")) {
 		if($this->opts['adformat']=="5") {echo 'var xg_pre_ewc="360";var yg_pre_ewc="440";';}
 		if($this->opts['adformat']=="6") {echo 'var xg_pre_ewc="'.$this->opts['width'].'";var yg_pre_ewc="'.$this->opts['height'].'";';}
 		?>
-		    
         var selposFull=document.getElementById('selpos').innerHTML;
         function f_pre_ewc(x_pre_ewc,y_pre_ewc){
           p_ad_ch_ewc=document.getElementById('dbgewc').style;
@@ -162,9 +152,7 @@ if (!class_exists("cbwec")) {
           }
           if(y_pre_ewc!=0){if(y_pre_ewc=="100%"){y_pre_ewc=600;}if(y_pre_ewc<201){y_pre_ewc=200;};y_pre_ewc=y_pre_ewc/10;p_ad_ch_ewc.height=Math.floor(y_pre_ewc/20)*20+'px';p_ad_ch_ewc.marginTop=p_ad_ch_ewc.marginBottom=Math.floor((y_pre_ewc-Math.floor(y_pre_ewc/20)*20)/2)+'px';}
         }
-        
         f_pre_ewc(xg_pre_ewc,yg_pre_ewc);
-        
         function f_selpos(n_ad_ch_ewc){
           selposl=document.getElementById('selpos');
           if(n_ad_ch_ewc=="1" || n_ad_ch_ewc=="2"){selposl.innerHTML=selposFull.replace(/<option[^>]*>Left<\/option>/,"").replace(/<option[^>]*>Right<\/option>/,"")}
@@ -178,8 +166,6 @@ if (!class_exists("cbwec")) {
           w_ad_ch_ewc=document.getElementById('<?php echo $this->get_field_id('width'); ?>');
           w_ad_ch_ewc2=document.getElementById('<?php echo $this->get_field_id('width'); ?>2');
           p_ad_ch_ewc=document.getElementById('dbgewc').style;
-          
-          
           switch (n_ad_ch_ewc){
 	        case "3":
             w_ad_ch_ewc.value=w_ad_ch_ewc2.value="160";
@@ -215,16 +201,13 @@ if (!class_exists("cbwec")) {
           f_car_ewc(n_ad_ch_ewc);
           dthids=document.getElementById('dthids').style;
           dthids2=document.getElementById('dthids2').style;
-          
           if(n_ad_ch_ewc==5 || n_ad_ch_ewc<3){dthids.dispaly='none';dthids2.display='none';}
           if(n_ad_ch_ewc==6){dthids.display='block';dthids2.display='block';}
           if(n_ad_ch_ewc==3 || n_ad_ch_ewc==4){dthids2.display='block';dthids.display='none';}
         }
         f_ad_ch_ewc(<?php echo $this->opts['adformat']?>)
 		    <?php echo 'clearTimeout(bg_ewci);n_ad_ch_ewcg="'.$this->opts['adformat'].'";f_car_ewc("'.$this->opts['adformat'].'")';?>  //start carousel     
-
       </script>
-      
       <p>
       <label for="<?php echo $this->get_field_id('border'); ?>">Show Border:</label>
       <input onclick="dthidm=document.getElementById('dthid').style;if(this.checked){dthidm.display='block';document.getElementById('d2bgewc').style.borderWidth='1px';}else{dthidm.display='none';document.getElementById('d2bgewc').style.borderWidth='0px';}" type="checkbox" <?php if($this->opts['border']=="1") {echo 'checked';}?> id="<?php echo $this->get_field_id('border'); ?>" name="<?php echo $this->get_field_name('border'); ?>" value="1" style="border:0px;" />
@@ -234,7 +217,6 @@ if (!class_exists("cbwec")) {
         <table border=0 width=200 cellspacing=0 cellpadding=0>
 	        <tr>
 		        <td width=50% valign=top align=center style="padding:0 10px 10px 0;">
-				
 				<div class="cbwecb10" style="padding:3px;background:#ffffff; border-radius:5px 5px 5px 5px;">
 				<table border=0 cellspacing=0 cellpadding=0><tr><td><label for="<?php echo $this->get_field_id('bordstyle'); ?>"><u class="cbwecb11">Style</u> 1 </label></td><td>&nbsp;<input type="radio" <?php if($this->opts['bordstyle']=="1") {echo 'checked';}?> value="1" id="<?php echo $this->get_field_id('bordstyle'); ?>"  name="<?php echo $this->get_field_name('bordstyle'); ?>" style="margin-top:3px;border:0px;" /></td></tr></table>
 				</div>
@@ -242,13 +224,9 @@ if (!class_exists("cbwec")) {
 				<td width=50% valign=top align=center style="padding:0 0 10px 10px;"><div class="cbwecb10" style="padding:3px;background:#ffffff;"><table border=0 cellspacing=0 cellpadding=0><tr><td><label for="<?php echo $this->get_field_id('bordstyle'); ?>2"><u class="cbwecb11">Style</u> 2 </label></td><td><input type="radio" <?php if($this->opts['bordstyle']=="2") {echo 'checked';}?> value="2" id="<?php echo $this->get_field_id('bordstyle'); ?>2" name="<?php echo $this->get_field_name('bordstyle'); ?>" style="margin-top:3px;border:0px;" /></td></tr></table></div></td>
           </tr>
         </table>
-
 	      <table border=0 cellspacing=0 cellpadding=0><tr><td width=90><label for="<?php echo $this->get_field_id('bordcolor'); ?>">Border Color: </label></td><td>#<input onblur="var e = document.getElementsByTagName('div');for(var i=0; i<e.length; i+=1) {if(e[i].className && e[i].className=='cbwecb10'){e[i].style.borderColor = '#'+this.value;}}" onmouseover="jscolor.bind()" class="color" type="text" id="<?php echo $this->get_field_id('bordcolor'); ?>" name="<?php echo $this->get_field_name('bordcolor'); ?>" value="<?php echo $this->opts['bordcolor']; ?>" style="width:70px;" /></td></tr></table>
-
       </div>
-
       <table border=0 cellspacing=0 cellpadding=0><tr><td width=90><label for="<?php echo $this->get_field_id('linkcolor'); ?>"><u class="cbwecb11">Link Color: </u></label></td><td>#</span><input onblur="var e = document.getElementsByTagName('u');for(var i=0; i<e.length; i+=1) {if(e[i].className && e[i].className=='cbwecb11') {e[i].style.color = '#'+this.value;}}" onmouseover="jscolor.bind()" class="color" type="text" id="<?php echo $this->get_field_id('linkcolor'); ?>" name="<?php echo $this->get_field_name('linkcolor'); ?>" value="<?php echo $this->opts['linkcolor']; ?>" style="width:70px;" /></td></tr></table>
-      
       <p>
           <label for="<?php echo $this->get_field_id('runplugin'); ?>">Show Ads in Post area:</label>
           <input type="checkbox" <?php if($this->opts['runplugin']=="1") {echo 'checked';}?> id="<?php echo $this->get_field_id('runplugin'); ?>" name="<?php echo $this->get_field_name('runplugin'); ?>" value="1" style="border:0px;" />
@@ -261,14 +239,11 @@ if (!class_exists("cbwec")) {
           <label for="<?php echo $this->get_field_id('onlypost'); ?>">Show Ads only on posts:</label>
           <input type="checkbox" <?php if($this->opts['onlypost']=="1") {echo 'checked';}?> id="<?php echo $this->get_field_id('onlypost'); ?>" name="<?php echo $this->get_field_name('onlypost'); ?>" value="1" style="border:0px;" />
       </p>
-
-      
       <div class="submit">
         <input type="submit" name="cbwec_submit" value="<?php _e('Save'); ?> &raquo;" />
       </div>
     </form>
 </div>
-
 <?php
  }  
  
@@ -337,7 +312,6 @@ function add_js($content) {
 	addListenerCB(window,'scroll',function(){showCbads();})
 	addListenerCB(window,'resize',function(){showCbads();})
 	addListenerCB(window,'load',function(){showCbads();})
-
 	function getCoordsCB(elem){
 		var box=elem.getBoundingClientRect();
 		var body=document.body;
@@ -387,9 +361,6 @@ function cbwec_menu() {
 } 
 add_action('admin_menu', 'cbwec_menu');
 add_filter('the_content', array($cbwec, 'add_js')); //run script on page
-
-
-
 
 
 
@@ -464,7 +435,6 @@ class ClickBank_Ads_W extends WP_Widget {
 	addListenerCB2(window,'scroll',function(){showCbads();})
 	addListenerCB2(window,'resize',function(){showCbads();})
 	addListenerCB2(window,'load',function(){showCbads();})
-
 	function getCoordsCB(elem){
 		var box=elem.getBoundingClientRect();
 		var body=document.body;
@@ -508,7 +478,6 @@ class ClickBank_Ads_W extends WP_Widget {
         $instance['adformat'] = strip_tags($new_instance['adformat']);
         $instance['height'] = strip_tags($new_instance['height']);
         $instance['width'] = strip_tags($new_instance['width']);
-               
         return $instance;
     }
 
@@ -519,7 +488,6 @@ class ClickBank_Ads_W extends WP_Widget {
         if($instance['adformat']=="5"){$instance['adformat']="3";}
         ?>
         <script type="text/javascript" src="<?php echo plugins_url( '/jscolor/jscolor.js', __FILE__ );?>"></script>
-
         <p>
           <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label><br />
           <input type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" style="width:200px;" />
@@ -536,7 +504,6 @@ class ClickBank_Ads_W extends WP_Widget {
             <input type="text" id="<?php echo $this->get_field_id('keywords'); ?>" name="<?php echo $this->get_field_name('keywords'); ?>" value="<?php echo $instance['keywords']; ?>" placeholder="Enter Your Keywords" style="width:200px;" />
           </div>
         </p>
-        
 		    <p>Width:<br />
 		      <select onchange="document.getElementById('<?php echo $this->get_field_id('width'); ?>').value=this.value;" size="1" id="<?php echo $this->get_field_id('width'); ?>2" name="<?php echo $this->get_field_name('width'); ?>2" style="width:100px;">
 		        <option value="100%" <?php if($instance['width']=="100%") {echo 'selected';}?>>100%</option>
@@ -558,7 +525,6 @@ class ClickBank_Ads_W extends WP_Widget {
 		      OR 
 		      <input  type="text" id="<?php echo $this->get_field_id('width'); ?>" name="<?php echo $this->get_field_name('width'); ?>" value="<?php echo $instance['width']; ?>" style="width:50px;" />
         </p> 
- 
  		    <p>Height:<br />
 		      <select onchange="document.getElementById('<?php echo $this->get_field_id('height'); ?>').value=this.value;f_pre_ewc(0,this.value);yg_pre_ewc=this.value" size="1" id="<?php echo $this->get_field_id('height'); ?>2" name="<?php echo $this->get_field_name('height'); ?>2" style="width:100px;">
 		        <option value="200" <?php if($instance['height']=="200") {echo 'selected';}?>>200 px</option>
@@ -573,9 +539,6 @@ class ClickBank_Ads_W extends WP_Widget {
 		      OR 
 		      <input onchange="f_pre_ewc(0,this.value);yg_pre_ewc=this.value" type="text" id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" value="<?php echo $instance['height']; ?>" style="width:50px;" />
         </p> 
-        
-        
-
 			<style>
 			.cbwecwb10 {border: 1px solid #<?php echo $instance['bordcolor'] ?>;}
 			.cbwecwb11 {color:#<?php echo $instance['linkcolor']; ?>;}
@@ -590,15 +553,12 @@ class ClickBank_Ads_W extends WP_Widget {
 		        <option value="5">Horizontal Banner or Carousel</option>
 		      </select></td>
 		      <td valign=top style="padding-left:5px;">
-			  
 			  <div class="cbwecwb10" id="d2bgewc<?echo $tmstmp_ewc;?>" style="position:absolute;"><div id=dbgewc<?echo $tmstmp_ewc;?> style="background: url(<?php echo plugins_url( 'prev.png', __FILE__ );?>) left top;"><img src=<?php echo plugins_url( '1.gif', __FILE__ );?> width=1 height=1></div></div>
-			  
 			  </td>
 		     </tr>
 		    </table>
 		    <div id="dthidti2<?echo $tmstmp_ewc;?>" style="overflow:hidden;display:none;">Widgets allow only vertical banners. For horizontal leaderboard, horizontal carousel and rectangle, go to the '<a href="options-general.php?page=clickbank-ads-clickbank-widget/clickbank-ads.php">Settings -> ClickBank Ads</a>' SubPanel and configure plugin.</div>
         <br />
-
         <p>
           <label for="<?php echo $this->get_field_id('border'); ?>">Show Border:</label>
           <input onmouseover="f_init_ewc();" onclick="f_ch_br(this.checked)" type="checkbox" <?php if($instance['border']=="1") {echo 'checked';}?> id="<?php echo $this->get_field_id('border'); ?>" name="<?php echo $this->get_field_name('border'); ?>" value="1" style="border:0px;" />
@@ -609,7 +569,6 @@ class ClickBank_Ads_W extends WP_Widget {
         <table border=0 width=100% cellspacing=0 cellpadding=0>
 	        <tr>
 		        <td width=50% valign=top align=center style="padding:0 10px 10px 0;">
-				
 				<div class="cbwecwb10" style="padding:3px;background:#ffffff; border-radius:5px 5px 5px 5px;">
 					<table border=0 cellspacing=0 cellpadding=0><tr><td><label for="<?php echo $this->get_field_id('bordstyle'); ?>"><u class="cbwecwb11">Style</u> 1 </label></td><td>&nbsp;<input type="radio" <?php if($instance['bordstyle']=="1") {echo 'checked';}?> value="1" id="<?php echo $this->get_field_id('bordstyle'); ?>"  name="<?php echo $this->get_field_name('bordstyle'); ?>" style="margin-top:3px;border:0px;" /></td></tr></table>
 				</div>
@@ -619,7 +578,6 @@ class ClickBank_Ads_W extends WP_Widget {
         </table>
         <table border=0 cellspacing=0 cellpadding=0><tr><td width=90 height=20><label for="<?php echo $this->get_field_id('bordcolor'); ?>">Border Color: </label></td><td>#<input onblur="f_ch_clb(this.value);" onmouseover="jscolor.bind()" class="color" type="text" id="<?php echo $this->get_field_id('bordcolor'); ?>" name="<?php echo $this->get_field_name('bordcolor'); ?>" value="<?php echo $instance['bordcolor']; ?>" style="width:70px;" /></td></tr></table>
       </div>
-
       <table border=0 cellspacing=0 cellpadding=0><tr><td width=90 height=20><label for="<?php echo $this->get_field_id('linkcolor'); ?>"><u class="cbwecwb11">Link Color: </u></label></td><td>#</span><input onblur="f_ch_cll(this.value);" onmouseover="jscolor.bind()" class="color" type="text" id="<?php echo $this->get_field_id('linkcolor'); ?>" name="<?php echo $this->get_field_name('linkcolor'); ?>" value="<?php echo $instance['linkcolor']; ?>" style="width:70px;" /></td></tr></table>
 		<br><br>
       <script> 
@@ -637,7 +595,6 @@ class ClickBank_Ads_W extends WP_Widget {
 			for(var i=0; i<e.length; i+=1) {if(e[i].className && e[i].className=='cbwecwb11'){e[i].style.color = '#'+cl5;}}
 		}
 		//function f_in_obj(o9){r9="";for (i9 in o9)r9+=i9+"="+(o9[i9].toString()=="[object Object]"?"\n"+f_in_obj(o9[i9]):o9[i9])+"\n";return(r9);}//просмотр объекта
-
 		function f_init_ewc(){
 			var v_ewc_e = document.getElementsByTagName('div');//rename duplicate div's for first load
 			divs_cnt=0;
@@ -649,8 +606,6 @@ class ClickBank_Ads_W extends WP_Widget {
 			for(var v_ewc_i=0; v_ewc_i<v_ewc_e.length; v_ewc_i+=1) {if(v_ewc_e[v_ewc_i].id=='dbgewc<?echo $tmstmp_ewc;?>') {v_ewc_e[v_ewc_i].id=v_ewc_e[v_ewc_i].id+'old';break;}}
 			for(var v_ewc_i=0; v_ewc_i<v_ewc_e.length; v_ewc_i+=1) {if(v_ewc_e[v_ewc_i].id=='d2bgewc<?echo $tmstmp_ewc;?>') {v_ewc_e[v_ewc_i].id=v_ewc_e[v_ewc_i].id+'old';break;}}
         }
-        
-
         var bg_ewci;
         var bg_ewc=0;		
         var n_ad_ch_ewcg;   
@@ -659,14 +614,12 @@ class ClickBank_Ads_W extends WP_Widget {
           if(n_ad_ch_ewc=="4"){bg_ewci=setTimeout("if(bg_ewc<60){bg_ewc++;p_ad_ch_ewc.style.backgroundPosition='0 '+bg_ewc+'px'}else{bg_ewc=0};f_car_ewc(n_ad_ch_ewcg)", 40);}
           else{clearTimeout(bg_ewci);p_ad_ch_ewc.style.backgroundPosition='0 0';}
         }
-        
         <?php 
         if($instance['border']!="1") {echo "document.getElementById('d2bgewc".$tmstmp_ewc."').style.borderWidth='0px';";}
         if($instance['adformat']=="3") {echo 'var xg_pre_ewc="160";var yg_pre_ewc="1000";';}
 		    if($instance['adformat']=="4") {echo 'var xg_pre_ewc="160";var yg_pre_ewc="1000";';}
 		    echo "var yg_pre_ewc=\"".$instance['height']."\";";
 		    ?>
-        
         function f_pre_ewc(x_pre_ewc,y_pre_ewc){
           p_ad_ch_ewc=document.getElementById('dbgewc<?echo $tmstmp_ewc;?>').style;
           if(x_pre_ewc!=0){
@@ -674,22 +627,18 @@ class ClickBank_Ads_W extends WP_Widget {
             if(x_pre_ewc<49){document.getElementById('d2bgewc<?echo $tmstmp_ewc;?>').style.marginLeft=Math.floor(48-x_pre_ewc)+'px';}else{document.getElementById('d2bgewc<?echo $tmstmp_ewc;?>').style.marginLeft='0px';}
           }
           if(y_pre_ewc!=0){if(y_pre_ewc=="100%"){y_pre_ewc=800;}if(y_pre_ewc<201){y_pre_ewc=200;};if(y_pre_ewc>1000){y_pre_ewc=1000;};y_pre_ewc=y_pre_ewc/10;p_ad_ch_ewc.height=Math.floor(y_pre_ewc/20)*20+'px';p_ad_ch_ewc.marginTop=p_ad_ch_ewc.marginBottom=Math.floor((y_pre_ewc-Math.floor(y_pre_ewc/20)*20)/2)+'px';}
-        
         clearTimeout(bg_ewci);f_car_ewc(n_ad_ch_ewcg)
         }
-        
         f_pre_ewc(xg_pre_ewc,yg_pre_ewc);
-        
         function f_ad_ch_ewc(n_ad_ch_ewc){
           n_ad_ch_ewcg=n_ad_ch_ewc;
           if(n_ad_ch_ewc=="3"){f_pre_ewc(160,yg_pre_ewc);}
           if(n_ad_ch_ewc=="4"){f_pre_ewc(160,yg_pre_ewc);}
-          
           dthidti2=document.getElementById('dthidti2<?echo $tmstmp_ewc;?>').style;
           if(n_ad_ch_ewc=="5"){f_pre_ewc("100%",200);dthidti2.display="block";}else{dthidti2.display="none";}
           f_car_ewc(n_ad_ch_ewc);
         }
-		    <?php echo 'clearTimeout(bg_ewci);n_ad_ch_ewcg="'.$instance['adformat'].'";f_car_ewc("'.$instance['adformat'].'")';?>  //start carousel     
+		<?php echo 'clearTimeout(bg_ewci);n_ad_ch_ewcg="'.$instance['adformat'].'";f_car_ewc("'.$instance['adformat'].'")';?>  //start carousel     
       </script>
 <?php
     }
