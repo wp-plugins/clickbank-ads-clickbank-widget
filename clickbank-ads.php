@@ -3,7 +3,7 @@
   Plugin Name: ClickBank Ads
   Plugin URI: http://cbads.com/WordPressClickBankWithEbookCovers.html
   Description: This plugin creates a graphic banner in post and in widget areas to display ClickBank keyword-sensitive ads with ebook covers on your Wordpress blog. ClickBank clients have earned over 2 billion dollars. Now it's your turn. Graphic advertising and marketing is far better. Commissions of up to 75% - much higher than other affiliate networks. 
-  Version: 1.7
+  Version: 1.8
   Author: ClickBank Ads
   Author URI: http://cbads.com/
 *
@@ -20,7 +20,7 @@ License:     GNU General Public License
 */
 $bcgr="background:#ffffff;";//or for background from page => $bcgr="";
 
-$cbwec_version="1.7"; 
+$cbwec_version="1.8"; 
 if (!class_exists("cbwec")) {
   class cbwec {
     var $opts; 
@@ -39,7 +39,7 @@ if (!class_exists("cbwec")) {
     function admin_menu() {
 	  global $cbwec_version;
       if (isset($_POST["cbwec_submit"])) {
-		foreach($_POST["cbwec"] as &$val)	{$val = strip_tags($val);} 
+		foreach($_POST["cbwec"] as &$val)	{$val = sanitize_text_field($val);} 
         $this->opts=$this->sanitize_entries($_POST['cbwec'], $sizes); 
         update_option('ClickBankWEC3',$this->opts); 
         echo '<div id="message" class="updated fade"><p><strong>Options Updated!</strong></p></div>'; 
