@@ -38,7 +38,8 @@ if (!class_exists("cbwec")) {
    
     function admin_menu() {
 	  global $cbwec_version;
-      if (isset($_POST["cbwec_submit"])) { 
+      if (isset($_POST["cbwec_submit"])) {
+		foreach($_POST["cbwec"] as &$val)	{$val = strip_tags($val);} 
         $this->opts=$this->sanitize_entries($_POST['cbwec'], $sizes); 
         update_option('ClickBankWEC3',$this->opts); 
         echo '<div id="message" class="updated fade"><p><strong>Options Updated!</strong></p></div>'; 
